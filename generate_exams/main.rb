@@ -25,7 +25,7 @@ class Article < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("published_on","date"),Field.new("price","currency")].sample(2)
+		[Field.new("name","varchar"),Field.new("published_on","date"),Field.new("price","currency")].shuffle[0..1]
 	end
 end
 
@@ -36,7 +36,7 @@ class Category < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("description","varchar"),Field.new("date_created_on","date")].sample(2)
+		[Field.new("name","varchar"),Field.new("description","varchar"),Field.new("date_created_on","date")].shuffle[0..1]
 	end
 end
 
@@ -47,7 +47,7 @@ class User < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("password","varchar"),Field.new("created_on","date"),Field.new("age","integer")].sample(3)
+		[Field.new("name","varchar"),Field.new("password","varchar"),Field.new("created_on","date"),Field.new("age","integer")].shuffle[0..2]
 	end
 end
 
@@ -58,7 +58,7 @@ class Tag < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("priority","int"),Field.new("description","varchar")].sample(2)
+		[Field.new("name","varchar"),Field.new("priority","int"),Field.new("description","varchar")].shuffle[0..1]
 	end
 end
 
