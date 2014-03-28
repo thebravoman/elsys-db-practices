@@ -70,7 +70,7 @@ class Connection
 		@table1 = table1
 		@table2 = table2
 		connections = ["one to one", "one to many", "many to one", "many to many"]
-		@connection = connections[Random.rand(connections.size)]
+		@connection = connections[rand(connections.size)]
 	end
 	
 	def get_description
@@ -98,17 +98,18 @@ class Main
 			result << "\n"
 			puts result
 		end 
+		puts "As a result SQL queries must be created"
 		puts "\n"
 	end
 	
 	def generate_connections tables
 		new_tables = tables.dup
-		table1 = new_tables[Random.rand(tables.size)]
+		table1 = new_tables[rand(tables.size)]
 		connections = []
 		0.upto(conn_complexity) do 
 			table2 = table1
 			while table2 == table1 
-				table2 = new_tables[Random.rand(new_tables.size)]
+				table2 = new_tables[rand(new_tables.size)]
 			end
 			conn =Connection.new(table1, table2)
 			connections << conn
@@ -123,6 +124,7 @@ class Main
 			connections_string << "\n"
 		end
 		puts connections_string
+		puts "As a result SQL queries must be created"
 		puts "\n"
 		connections
 	end
@@ -131,12 +133,14 @@ class Main
 		puts "\n"
 		puts "3. Insert"
 		puts "Add at least two records in each table"
+		puts "As a result SQL queries must be created"
 		puts "\n"
 	end
 	
 	def generate_select conns
 		puts "4. Answer the following question"
 		puts "Which are the #{conns[1].table2.name}(s) for a given #{conns[0].table1.name}"
+		puts "As a result SQL query must be created"
 		puts "\n"
 	end
 	
@@ -144,14 +148,16 @@ class Main
 		puts "6. Execute the following migration"
 		table = conns[1].table1
 		puts "Separate #{table.name} on two tables"
-		puts "#{table.name}_part1 containing #{table.fields[Random.rand(table.fields.size)].name}"
+		puts "#{table.name}_part1 containing #{table.fields[rand(table.fields.size)].name}"
 		puts "#{table.name}_part2 containing all the other fields"
+		puts "As a result SQL queries+code in other programming language must be create"
 		puts 
 	end
 
 	def generate_second_select conns
 		puts "8. Answer the following question"
 		puts "Which are the #{conns[2].table2.name}(s) for a given #{conns[1].table1.name}"
+		puts "As a result SQL query must be created"
 		puts "\n"
 	end
 	
