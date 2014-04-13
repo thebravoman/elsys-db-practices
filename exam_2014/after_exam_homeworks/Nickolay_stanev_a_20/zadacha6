@@ -1,0 +1,60 @@
+1. Create the following tables
+Create table Article with columns
+	int id;
+	category_id int;
+	user_id int;
+	 published_on:date
+	 name:varchar
+
+Create table Category with columns
+	int id;
+	article_id;
+	 description:varchar
+	 name:varchar
+
+Create table User with columns
+	int id;
+	article_id int;
+	tag_id int;
+	 age:integer
+	 created_on:date
+	 name:varchar
+
+Create table Tag with columns
+	int id;
+	user_id int;
+	 description:varchar
+	 priority:int
+
+As a result SQL queries must be created
+
+2. Connect the tables in the following way
+Category has a one to one connection to Article
+Article has a one to one connection to User
+User has a one to one connection to Tag
+As a result SQL queries must be created
+
+
+3. Insert
+Add at least two records in each table
+As a result SQL queries must be created
+
+4. Answer the following question
+Which are the User(s) for a given Category
+As a result SQL query must be created
+Select User.name from User,Category , Article where Category.article_id = Article.category_id AND User.article_id = Article.user_id;
+
+5. Export the Data Base to SQL or CSV
+
+6. Execute the following migration
+Separate Article on two tables
+Article_part1 containing name
+Article_part2 containing all the other fields
+As a result SQL queries+code in other programming language must be create
+
+7. Export the Data Base to SQL or CSV
+
+8. Answer the following question
+Which are the Tag(s) for a given Article
+As a result SQL query must be created
+
