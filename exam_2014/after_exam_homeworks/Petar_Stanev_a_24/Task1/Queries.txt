@@ -1,0 +1,13 @@
+Create Table Article (id int not null AUTO_INCREMENT, Primary Key(id), url TEXT, price FLOAT(7,2), name varchar(64));
+Create Table Category (id int not null AUTO_INCREMENT, Primary Key(id), created_by TEXT, description varchar(64));
+Create Table User (id int not null AUTO_INCREMENT, Primary Key(id), income float, picture_url TEXT, age int);
+Create Table Tag (id int not null AUTO_INCREMENT, Primary Key(id), second_priority float, description varchar(64));
+Alter Table Tag Add UserID int;
+Alter Table Tag Add Constraint fkTagUser Foreign Key(UserID) References User(id);
+Alter Table User Add ArticleID int;
+Alter Table User Add Unique(ArticleID);
+Alter Table User Add Constraint fkUserArticle Foreign Key(ArticleID) References Article(id);
+Alter Table Article Add CategoryID int;
+Alter Table Article Add Unique(CategoryID);
+Alter Table Article Add Constraint fkArticleCategory Foreign Key(CategoryID) References Category(id);
+Insert Into Category (created_by, description) values ("zx", "asd"), ("zyx", "asd");
