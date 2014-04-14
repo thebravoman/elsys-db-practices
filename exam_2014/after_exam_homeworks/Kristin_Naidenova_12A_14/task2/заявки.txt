@@ -1,0 +1,73 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"PUBLISHED_ON" DATE, 
+	"URL" VARCHAR2(20 BYTE), 
+	"NAME" VARCHAR2(20 BYTE)
+  
+   );
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE), 
+	"PRIORITY" INT
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE) , 
+	"SECOND_PRIORITY" FLOAT
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+   "PICTURE" VARCHAR2 (10 BYTE), 
+	"CREATED_ON" DATE, 
+	"PASSWORD" VARCHAR2(20 BYTE)
+   ) ;
+
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, NAME) VALUES ('1', TO_DATE('2011-03-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'tr', 'ry');
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, NAME) VALUES ('2', TO_DATE('2013-09-08 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'fg', 'hfh');
+INSERT INTO "ELSYS"."CATEGORY" (ID, DESCRIPTION, PRIORITY, TAG_ID) VALUES ('1', 'dg', '1', '1');
+INSERT INTO "ELSYS"."CATEGORY" (ID, DESCRIPTION, PRIORITY, TAG_ID) VALUES ('2', 'dg', '2', '2');
+INSERT INTO "ELSYS"."TAG" (ID, DESCRIPTION, SECOND_PRIORITY, ARTICLE_ID) VALUES ('1', 'dg', 'fdg', '1');
+INSERT INTO "ELSYS"."TAG" (ID, DESCRIPTION, SECOND_PRIORITY, ARTICLE_ID) VALUES ('11', 'fg', 'ddfh', '11');
+INSERT INTO "ELSYS"."TAG" (ID, DESCRIPTION, SECOND_PRIORITY, ARTICLE_ID) VALUES ('11', 'fg', 'ddfh', '11');
+INSERT INTO "ELSYS"."USERS" (ID, PICTURE, CREATED_ON, PASSWORD, CATEGORY_ID) VALUES ('1', '1', TO_DATE('2011-02-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'oi', '1');
+INSERT INTO "ELSYS"."USERS" (ID, PICTURE, CREATED_ON, PASSWORD, CATEGORY_ID) VALUES ('2', '2', TO_DATE('2011-02-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'uhf', '2');
+
+
+
+alter table tag add article_id number;
+alter table category add tag_id number;
+alter table users add category_id number;
+
+
+
+select distinct category.id from users,  tag, article, category
+where tag.article_id = article.id and
+category.id = users.CATEGORY_ID and 
+tag.id = category.TAG_ID and
+article.id = 2;
+
+
+CREATE TABLE TAG_PART1(second_priority VARCHAR2(20 BYTE));
+insert into CATEGORY_PART1(second_priority) select t.second_priority from tag c;	
+ALTER TABLE tag DROP COLUMN second_priotiry;	
+alter table tag  rename to tag_part2;	
+
+
+
+select distinct users.id from users,  tag, article, category
+where tag.article_id = article.id and
+category.id = users.CATEGORY_ID and 
+tag.id = category.TAG_ID and
+tag.id = 2;
+
+
+
+
+

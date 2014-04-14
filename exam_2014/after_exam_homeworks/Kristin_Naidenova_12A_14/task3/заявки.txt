@@ -1,0 +1,64 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"PUBLISHED_ON" DATE, 
+	"CONTENT" VARCHAR2(20 BYTE), 
+	"NAME" VARCHAR2(20 BYTE)
+  
+   );
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"CREATED_BY" VARCHAR2(20 BYTE), 
+	"DATE_CREATED_ON" DATE
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"PRIORITY" FLOAT   , 
+	"SECOND_PRIORITY" INT
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+   "PICTURE_URL" VARCHAR2 (10 BYTE), 
+	"DESCRIPTION" VARCHAR2(20 BYTE), 
+	"NAME" VARCHAR2(20 BYTE)
+   ) ; 
+
+alter table tag add article_id number;
+alter table category add tag_id number;
+
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, CONTENT, NAME) VALUES ('1', TO_DATE('2011-01-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'TU', 'FFDH')
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, CONTENT, NAME) VALUES ('2', TO_DATE('2013-02-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'rrfg', 'fh')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, DATE_CREATED_ON, TAG_ID) VALUES ('1', 'eg', TO_DATE('2011-02-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '1')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, DATE_CREATED_ON, TAG_ID) VALUES ('2', 'dg', TO_DATE('2011-02-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '1')
+INSERT INTO "ELSYS"."TAG" (ID, PRIORITY, SECOND_PRIORITY, ARTICLE_ID) VALUES ('1', '11', '11', '1')
+INSERT INTO "ELSYS"."TAG" (ID, PRIORITY, SECOND_PRIORITY, ARTICLE_ID) VALUES ('2', '22', '22', '2')
+INSERT INTO "ELSYS"."USERS" (ID, PICTURE_URL, DESCRIPTION, NAME) VALUES ('1', 'ffdg', 'ffg', 'fdg')
+INSERT INTO "ELSYS"."USERS" (ID, PICTURE_URL, DESCRIPTION, NAME) VALUES ('2', 'cv', 'cvn', 'nv')
+
+select distinct category.id from users,  tag, article, category
+where tag.article_id = article.id and
+tag.id = category.TAG_ID and
+article.id = 2;
+
+CREATE TABLE TAG_PART1(second_priority VARCHAR2(20 BYTE));
+insert into CATEGORY_PART1(second_priority) select t.second_priority from tag c;	
+ALTER TABLE tag DROP COLUMN second_priotiry;	
+alter table tag  rename to tag_part2;	
+
+select users.ID from  category,tag, users, article
+where tag.id = 1 and tag.article_id = article.id;
+
+
+
+
+
+
+
+
+
