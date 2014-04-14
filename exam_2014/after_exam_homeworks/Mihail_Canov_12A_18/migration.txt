@@ -1,0 +1,113 @@
+// Migration script
+
+public static void doMigration() throws IOException {
+
+	BufferedReader br = new BufferedReader(new FileReader(fileName));
+	String line;
+	while ((line = br.readLine()) != null) {
+		if (line.contains("Separate")) {
+			String table = line.split(" ")[1];
+
+			BufferedReader br2 = br;
+			String next = br2.readLine();
+			String newTable1 = next.split(" ")[0];
+			String contTable1 = next.split(" ")[2];
+			next = br2.readLine();
+			String newTable2 = next.split(" ")[0];
+			String contTable1type = "";
+
+			ArrayList<String> contTable2 = new ArrayList<String>();
+			ArrayList<String> contTable2types = new ArrayList<String>();
+
+			ArrayList<Object> content1 = new ArrayList<Object>();
+			ArrayList<Object> content2 = new ArrayList<Object>();
+
+			String dbUrl = "jdbc:mysql://localhost:3306/" + databaseName;
+			String dbDriverClass = "com.mysql.jdbc.Driver";
+			String userName = "root", password = "root";
+
+			try {
+				Class.forName(dbDriverClass);
+				Connection conn = DriverManager.getConnection(dbUrl,
+						userName, password);
+
+				Statement st = conn.createStatement();
+
+				ResultSet rs = st.executeQuery("select * from " + table);
+				ResultSetMetaData rsmd = rs.getMetaData();
+				for (int i = 2; i < rsmd.getColumnCount() + 1; i++) {
+					if (!rsmd.getColumnName(i).equals(contTable1)) {
+						contTable2.add(rsmd.getColumnName(i));
+						contTable2types.add(rsmd.getColumnTypeName(i));
+					} else {
+						contTable1type = rsmd.getColumnTypeName(i);
+						if (contTable1type.equals("VARCHAR"))
+							contTable1type += "(255)";
+					}
+				}
+
+				String query1 = "CREATE TABLE IF NOT EXISTS " + newTable1
+						+ " (id INT NOT NULL AUTO_INCREMENT, " + contTable1
+						+ " " + contTable1type + ", PRIMARY KEY(id))";
+				String query2 = "CREATE TABLE IF NOT EXISTS " + newTable2
+						+ " (id INT NOT NULL AUTO_INCREMENT";
+
+				for (int i = 0; i < contTable2.size(); i++) {
+					query2 += ", " + contTable2.get(i) + " ";
+					if (contTable2types.get(i).equals("VARCHAR"))
+						query2 += contTable2types.get(i) + "(255)";
+					else
+						query2 += contTable2types.get(i);
+				}
+				query2 += ", PRIMARY KEY(id))";
+
+				st.executeUpdate(query1);
+				st.executeUpdate(query2);
+
+				System.out.println(query1);
+				System.out.println(query2);
+
+				rs = st.executeQuery("select * from " + table);
+				while (rs.next()) {
+
+					for (int i = 2; i < rsmd.getColumnCount() + 1; i++) {
+						if (!rsmd.getColumnName(i).equals(contTable1)) {
+							content2.add(rs.getObject(i));
+						} else {
+							content1.add(rs.getObject(i));
+						}
+					}
+				}
+				int pos = 0;
+				for (int i = 0; i < content1.size(); i++) {
+					String query3 = "INSERT INTO " + newTable1
+							+ " VALUES (NULL, " + "'" + content1.get(i)
+							+ "'" + ")";
+					String query4 = "INSERT INTO " + newTable2
+							+ " VALUES (NULL";
+					for (int j = 0; j < contTable2.size(); j++, pos++) {
+						if (contTable2types.get(j).equals("VARCHAR")
+								|| contTable2types.get(j).equals("DATE")) {
+							query4 += ", '" + content2.get(pos) + "'";
+						} else {
+							query4 += ", " + content2.get(pos);
+						}
+					}
+					query4 += ")";
+					System.out.println(query3);
+					System.out.println(query4);
+					st.executeUpdate(query3);
+					st.executeUpdate(query4);
+				}
+				// st.executeUpdate("DROP TABLE Article");
+
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+}
