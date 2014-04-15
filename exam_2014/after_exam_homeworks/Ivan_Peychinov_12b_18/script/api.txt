@@ -1,0 +1,39 @@
+1 : CREATE TABLE
+{
+"id" : 1,
+"table" : "table_name",
+"columns" : "column"
+}
+
+2 : ONE TO MANY
+{
+"id" : 2,
+"first" : "tableofone",
+"second" : "tableofmany"
+}
+
+3 : ONE TO ONE
+{
+"id" : 3,
+"first" : "tableofone",
+"second" : "tableofone"	
+}
+
+4 : MANY TO MANY
+{
+"id" : 4,
+"first" : "tableofmany",
+"second" : "tableofmany"
+}
+
+5 : SPLIT MIGRATE //adjust code to suit needs
+{
+"id" : 5,
+"table" : "nameoftabletobesplit"
+}
+
+6 : COMBINE MIGRATE //adjust code to suit needs
+{
+"id" : 6,
+"table" : "nameofresulttable"
+}
