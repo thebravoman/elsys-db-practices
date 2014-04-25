@@ -1,0 +1,1 @@
+#defineNGX_RESOLVER_UDP_SIZE4096typedefstruct{u_charident_hi;u_charident_lo;u_charflag_hi;u_charflag_lo;u_charngs_hi;u_charngs_lo;u_charnan_hi;u_charnan_lo;u_charnns_hi;u_charnns_lo;u_charnar_hi;u_charnar_lo;}ngx_resolver_query_t;typedefstruct{u_chartype_hi;u_chartype_lo;u_charclass_hi;u_charclass_lo}ngs_resolver_qs_t;typedefstruct{u_chartype_hi;u_chartype_lo;u_charclass_hi;

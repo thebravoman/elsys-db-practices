@@ -1,0 +1,1 @@
+cc-c-pipe-O-W-Wall-Wpointer-arith-Wno-unused-parameter-Werror-g-lsrc/core-Isrc/event-Isrc/event/modules-Isrc/os/unix-Iobjs-Isrc/http-Isrc/http/modules\-oobjs/src/http/modules/ngx_htpp_upstream_least_conn_module.o\src/http/modules/ngx_http_upstream_least_conn_module.c

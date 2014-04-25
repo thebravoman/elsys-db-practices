@@ -1,0 +1,6 @@
+	cc -c -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g  -I src/core -I src/event -I src/event/modules -I src/os/unix -I objs -I src/http -I src/http/modules \
+		-o objs/src/http/modules/ngx_http_upstream_ip_hash_module.o \
+		src/http/modules/ngx_http_upstream_ip_hash_module.c
+cc -c -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g  -I src/core -I src/event -I src/event/modules -I src/os/unix -I objs -I src/http -I src/http/modules \
+		-o objs/src/http/modules/ngx_http_upstream_least_conn_module.o \
+		src/http/modules/ngx_http_upstream_least_conn_module.c
