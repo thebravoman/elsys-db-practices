@@ -1,0 +1,48 @@
+1.
+	create table Article (UID integer not null generated always as identity (start with 1, increment by 1),name varchar (30),price int);
+	create table Category (UID integer not null generated always as identity (start with 1, increment by 1), name varchar (30), description varchar(55));
+	0 rows inserted/updated/deleted
+	create table Users (UID integer not null generated always as identity (start with 1, increment by 1), name varchar(30),age int,password varchar(30));
+	0 rows inserted/updated/deleted
+	create table tag (UID integer not null generated always as identity (start with 1, increment by 1),description varchar(55),name varchar(30));
+	0 rows inserted/updated/deleted
+
+2. 
+
+	ij> alter table category add column article_id int;
+	0 rows inserted/updated/deleted
+	ij> alter table users add column tag_id int;
+	0 rows inserted/updated/deleted
+	
+3.
+
+	ij> insert into article (name,price) values ('bojidar',1024);
+	ij> insert into article (name,price) values ('nikolay',4096);
+	
+
+	ij> insert into category (name,description,article_id) values ('sports','adgadsgagasdg',1);
+	ij> insert into category (name,description,article_id) values ('economy','2412fdsasga',2);
+		
+
+	ij> insert into users (name,age,password,tag_id) values ('gosho',5,'alabala',2);
+	ij> insert into users (name,age,password,tag_id) values ('pesho',55,'lalalawsdw',1);
+	
+	ij> insert into tag (description,name) values ('alabalaagbablba','tag1');
+	ij> insert into tag (description,name) values ('alabalafdfsdfsdafsdfasdf','tag2');
+
+4.
+	select article.name from users,article,tag where users.tag_id=tag.UID and tag.UID=article.UID and users.UID=1;
+	
+5. exported
+
+6.
+	ij> create table tag_part1 (id integer not null generated always as identity (start with 1, increment by 1),description varchar(55));
+	ij> insert into tag_part1 (description) select description from tag;	
+	ij> alter table tag drop column description;   
+	ij> rename table tag to tag_part2;
+	
+7. exported
+
+8.Which are the Category(s) for a given Tag
+	select category.name from category,article,tag_part2 where tag_part2.UID=article.uid and category.article_id=article.uid and tag_part2.uid=1;
+	

@@ -1,0 +1,49 @@
+1.
+	create table Article (UID integer not null generated always as identity (start with 1, increment by 1),name varchar (30),price int);
+	create table Category (UID integer not null generated always as identity (start with 1, increment by 1), name varchar (30), date_created date);
+	0 rows inserted/updated/deleted
+	create table Users (UID integer not null generated always as identity (start with 1, increment by 1), name varchar(30),created_on date,password varchar(30));
+	0 rows inserted/updated/deleted
+	create table tag (UID integer not null generated always as identity (start with 1, increment by 1),description varchar(55),priority int);
+	0 rows inserted/updated/deleted
+
+2. 
+
+	ij> alter table article add column tag_id int;
+	0 rows inserted/updated/deleted
+	ij> alter table users add column article_id int;
+	0 rows inserted/updated/deleted
+	
+3.
+
+	ij> insert into article (name,price,tag_id) values ('bojidar',1024,1);
+	ij> insert into article (name,price,tag_id) values ('nikolay',4096,2);
+	
+
+	ij> insert into category (name,date_created) values ('sports','05.03.2000');
+	ij> insert into category (name,date_created) values ('economy','03.07.2001');
+		
+
+	ij> insert into users (name,created_on,password,article_id) values ('gosho','05.03.2014','alabala',2);
+	ij> insert into users (name,created_on,password,article_id) values ('pesho','02.01.2014','lalalawsdw',1);
+	
+	ij> insert into tag (description,priority) values ('alabalaagbablba',1);
+	ij> insert into tag (description,priority) values ('alabalafdfsdfsdafsdfasdf',5);
+
+4. 
+
+	select users.name from users,article,tag where article.tag_id=tag.UID and users.article_id=article.UID and tag.UID=1;
+	
+5. exported
+
+6.
+	ij> create table article_part1 (id integer not null generated always as identity (start with 1, increment by 1),name varchar(30));
+	ij> insert into article_part1 (name) select name from article;	
+	ij> alter table article drop column name;   
+	ij> rename table article to article_part2;
+	
+7. exported
+
+8.
+	select category.name from users,category,article_part2 where users.article_id=article_part2.UID and category.UID=users.UID and article_part2.UID=2;
+	
