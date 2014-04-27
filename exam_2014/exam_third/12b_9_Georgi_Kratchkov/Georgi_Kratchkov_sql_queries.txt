@@ -1,0 +1,21 @@
+CREATE TABLE Article(id int, name varchar(50), url varchar(50), published_on date, primary key(id))
+INSERT INTO Article VALUES ( 1,"Asen", "exam.com", "2005-02-02"),( 2,"Ivan", "exam.com", "2005-02-02")
+CREATE TABLE Category(id int, name varchar(50), created_by varchar(50), article_id int, primary key (id, article_id))
+INSERT INTO Category VALUES ( 1, "Ivan", "Petar", 1),( 2, "Ivan2", "Simo", 2)
+CREATE TABLE User(id int,description longtext, age int, name varchar(50), tag_id int, primary key (id, tag_id), unique(tag_id))
+INSERT INTO User VALUES ( 1, "description", 12, "Pesho", 1),( 2, "description2", 18, "Pesho2", 2)
+CREATE TABLE Tag(id int, priority int, description varchar(50), primary key(id))
+INSERT INTO Tag VALUES ( 1, 1, "description"),( 2, 2, "description2")
+CREATE TABLE Tag_has_Article (tag_id int, article_id int, primary key(tag_id, article_id))
+INSERT INTO Tag_has_Article VALUES ( 1, 1),( 2, 2)
+
+Which are the Article(s) for a given User
+As a result SQL query must be created
+
+SELECT Article.name FROM Article JOIN Tag_has_Article ON Article.id = Tag_has_Article.article_id JOIN Tag ON Tag.id = Tag_has_Article.tag_id JOIN User ON User.tag_id = Tag.id WHERE User.id = 2
+
+
+Which are the Category(s) for a given Tag
+As a result SQL query must be created
+
+SELECT Category.name FROM Category JOIN Article ON Category.article_id = Article.id JOIN Tag_has_Article ON Article.id = Tag_has_Article.article_id JOIN Tag_part2 ON Tag_part2.id = Tag_has_Article.tag_id WHERE Tag_part2.id = 1
