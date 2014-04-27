@@ -1,0 +1,25 @@
+1.2.
+Create table Article(created_on date,price int,published_on date,article_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT);
+Create table Category(date_created_on date,priority int,category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,tag_id int);
+Create table Users(created_on date,name varchar(40),income int,users_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT);
+Create table Tag(second_priority int,description varchar(40),tag_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,users_id int);
+Create table ArticleCategory(article_id int,category_id int);
+
+3.
+Insert into Article(created_on,price,published_on) values ('2000-01-01',100,'2001-01-01'),('2002-01-01',200,'2003-01-01');
+Insert into Category(date_created_on,priority,tag_id) values ('2004-01-01',2,1),('2005-01-01',3,2);
+Insert into Tag(second_priority,description) values (4,'dsfds',1),(5,'sdfsdf',2);
+Insert into Users(created_on,name,income) values ('2006-01-01','dsgrsgds',196),('2007-01-01','sdmgjkgfsdf',223);
+Insert into ArticleCategory(article_id,category_id) values (1,2),(1,1),(2,1);
+
+4.
+Select Tag.description,Article.price From Tag,Category,Article,ArticleCategory Where Tag.tag_id=Category.tag_id And Category.category_id=ArticleCategory.category_id AND ArticleCategory.article_id=Article.article_id;
+
+6.
+Create table Category_part1(category_id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,priority int);
+Insert into Category_part1(priority) select priority from Category;
+Alter table Category drop column priority;
+Rename table Category to Category_part2;
+
+8.
+Select Users.name,Category_part2.date_created_on From Users,Tag,Category_part2 Where Users.users_id=Tag.users_id And Tag.tag_id=Category_part2.tag_id;
