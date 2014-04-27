@@ -1,0 +1,60 @@
+create database problem4;
+use problem4;
+
+create table article (
+   id int unsigned not null primary key auto_increment,
+	 price double,
+	 published_on date
+);
+
+create table category (
+   id int unsigned not null primary key auto_increment,
+	 date_created_on date,
+	 name varchar(20)
+);
+
+create table user (
+   id int unsigned not null primary key auto_increment,
+	 created_on date,
+	 password varchar(20),
+	 age int
+);
+
+create table tag (
+   id int unsigned not null primary key auto_increment,
+	 priority int,
+	 name varchar(20)
+);
+
+alter table user add column article_id int unsigned not null;
+alter table category add column user_id int unsigned not null;
+alter table tag add column article_id int unsigned not null;
+
+insert into article (id,price,published_on) values
+	(1, 20.30, '2014-03-05'),
+  (2, 21.30, '2013-05-30');
+
+insert into category (id,date_created_on,name, user_id) values
+	(1, '2014-03-06', 'fesefse', 1),
+  (2, '2014-03-05', 'esfef', 2);
+
+insert into user (id,created_on,password,age, article_id) values
+	(1, '2014-03-02', '123', 21, 1);
+  (2, '2014-02-03', '1234', 25, 2);
+
+insert into tag (id,priority,name, article_id) values
+	(1, 20, 'sfesef', 1),
+  (2, 10, 'sefef', 2);
+
+select user.* from article 
+  join user on user.article_id = article.id 
+  join tag on article.id= tag.article_id 
+  where tag.name='sfesef';
+
+create table Article_part1 (id int unsigned not null auto_increment, price double, primary key (id));
+create table Article_part2 (id int unsigned not null auto_increment, published_on date, primary key (id));
+insert into Article_part1 (price) select price from article;
+insert into Article_part2 (published_on) select published_on from article;
+drop table Article;
+
+select category.* from user join Article_part2 on user.article_id = Article_part2.id join category on user.id = category.user_id where Article_part2.id = 1;
