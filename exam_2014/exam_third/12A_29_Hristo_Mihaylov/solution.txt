@@ -1,0 +1,46 @@
+DROP DATABASE exam_database;
+CREATE DATABASE exam_database;
+USE exam_database;
+
+CREATE TABLE Article ( created_on DATE NOT NULL, price DECIMAL(15, 5) NOT NULL, published_on DATE NOT NULL, many_tag_id INT NOT NULL, article_id INT NOT NULL PRIMARY KEY UNIQUE);
+CREATE TABLE Category ( priority DOUBLE(15, 5) NOT NULL, description VARCHAR(30) NOT NULL, category_id INT NOT NULL PRIMARY KEY UNIQUE);
+CREATE TABLE User ( age INT NOT NULL, password VARCHAR(30) NOT NULL, description LONGTEXT, many_category_id INT NOT NULL);
+CREATE TABLE Tag ( priority INT NOT NULL, second_priority FLOAT(15, 5) NOT NULL, tag_id INT NOT NULL PRIMARY KEY UNIQUE);
+CREATE TABLE article_category (article_id INT NOT NULL, category_id INT NOT NULL);
+
+ALTER TABLE Article ADD CONSTRAINT FOREIGN KEY (many_tag_id) REFERENCES Tag (tag_id);
+ALTER TABLE article_category ADD CONSTRAINT FOREIGN KEY (article_id) REFERENCES Article (article_id);
+ALTER TABLE article_category ADD CONSTRAINT FOREIGN KEY (category_id) REFERENCES Category (category_id);
+ALTER TABLE User ADD CONSTRAINT FOREIGN KEY (many_category_id) REFERENCES Category (category_id);
+
+INSERT INTO Category VALUES (13.23, 'just', 1);
+INSERT INTO Category VALUES (6.2, 'too', 2);
+
+INSERT INTO Tag VALUES (321, 1.02, 1);
+INSERT INTO Tag VALUES (1, 1.02, 2);
+
+INSERT INTO User VALUES (5, 'too', 'miss', 1);
+INSERT INTO User VALUES (91784, 'out', 'this', 2);
+
+INSERT INTO Article VALUES ('1337-01-03', 5.72, '2341-01-28', 1, 1);
+INSERT INTO Article VALUES ('1337-01-03', 13.23, '2341-01-28', 2, 2);
+
+INSERT INTO article_category VALUES (1, 1);
+INSERT INTO article_category VALUES (2, 2);
+
+SELECT Category.category_id FROM Category
+INNER JOIN Tag
+INNER JOIN Article
+INNER JOIN article_category
+WHERE Category.category_id = article_category.category_id
+AND Article.article_id = article_category.article_id
+AND Tag.tag_id = Article.many_tag_id;
+
+SELECT * FROM User
+INNER JOIN Article
+INNER JOIN Category
+INNER JOIN article_category
+WHERE Category.category_id = article_category.category_id
+AND Article.article_id = article_category.article_id
+AND User.many_category_id = Category.category_id;
+
