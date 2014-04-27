@@ -1,0 +1,63 @@
+create database problem2;
+
+use problem2;
+
+create table article (
+   id int unsigned not null primary key auto_increment,
+	 name varchar(20),
+	 price double
+);
+
+create table category (
+   id int unsigned not null primary key auto_increment,
+	 description varchar(20),
+	 date_created_on date
+);
+
+create table user (
+   id int unsigned not null primary key auto_increment,
+	 age integer,
+	 name varchar(20),
+	 password varchar(20)
+);
+
+create table tag (
+   id int unsigned not null primary key auto_increment,
+	 description varchar(20),
+	 name varchar(20)
+);
+
+alter table category add foreign key (id) references tag(id);
+alter table category add column user_id int unsigned not null;
+alter table tag add column article_id int unsigned not null;
+
+insert into article (id,name,price) values
+	(1,'jhsfejhsef', 20.3),
+	(2,'sehf', 12.03);
+
+insert into category (id,description,date_created_on, user_id) values
+	(1,'seffe','2014-03-05',1),
+	(2,'drgr','2014-05-06',2);
+
+insert into tag (id,description,name, article_id) values
+  (1, 'sefsefse', 'name1', 2),
+	(2, 'efsefsef', 'name2', 1);
+
+insert into user (id,age,name,password) values
+	(1, 21, 'sefse', '1234'),
+	(2, 25, 'sefsef', '3543');
+
+select tag.* from category join user on user.id = category.user_id join tag on category.id = tag.id where user.name = 'sefse';
+
+create table Category_part1 (id int unsigned not null auto_increment, date_created_on DATE, primary key (id));
+
+create table Category_part2 (id int unsigned not null auto_increment, description varchar(20), user_id int unsigned not null, primary key (id));
+
+insert into Category_part1 (date_created_on) select date_created_on FROM category;
+
+insert into Category_part2 (description, user_id) select description, user_id from category;
+
+drop table category;
+
+select article.* from tag join Category_part2 on tag.id = Category_part2.id join article on article.id = tag.article_id where Category_part2.id = 1;
+
