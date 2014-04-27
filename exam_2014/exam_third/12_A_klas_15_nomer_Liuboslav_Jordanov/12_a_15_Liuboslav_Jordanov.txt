@@ -1,0 +1,68 @@
+1. 
+CREATE TABLE IF NOT EXISTS Article(id int AUTO_INCREMENT, name varchar(50), url varchar(100), content varchar(200), PRIMARY KEY (id))
+CREATE TABLE IF NOT EXISTS Category(id int AUTO_INCREMENT, date_created_on date, name varchar(50), PRIMARY KEY (id))
+CREATE TABLE IF NOT EXISTS User(id int AUTO_INCREMENT, password varchar(50), description varchar(255), income float, PRIMARY KEY (id))
+CREATE TABLE IF NOT EXISTS Tag(id int AUTO_INCREMENT, second_priority float, name varchar(50), PRIMARY KEY (id))
+
+2.
+CREATE TABLE Tag_to_Category(id int AUTO_INCREMENT, Tag_id int, Category_id int, PRIMARY KEY (id))
+CREATE TABLE Category_to_Article(id int AUTO_INCREMENT, Category_id int, Article_id int, PRIMARY KEY (id))
+CREATE TABLE Article_to_User(id int AUTO_INCREMENT, Article_id int, User_id int, PRIMARY KEY (id))
+
+3.
+INSERT INTO Article VALUES(NULL, "AAAA", "AAAA", "AAAA")
+INSERT INTO Article VALUES(NULL, "BBBB", "BBBB", "BBBB")
+INSERT INTO Article VALUES(NULL, "CCCC", "CCCC", "CCCC")
+INSERT INTO Article VALUES(NULL, "DDDD", "DDDD", "DDDD")
+INSERT INTO Article VALUES(NULL, "EEEE", "EEEE", "EEEE")
+INSERT INTO Article_to_User VALUES(NULL, 1, 1)
+INSERT INTO Article_to_User VALUES(NULL, 1, 1)
+INSERT INTO Article_to_User VALUES(NULL, 2, 2)
+INSERT INTO Article_to_User VALUES(NULL, 3, 3)
+INSERT INTO Article_to_User VALUES(NULL, 3, 3)
+INSERT INTO Category VALUES(NULL, NOW(), "AAAA")
+INSERT INTO Category VALUES(NULL, NOW(), "BBBB")
+INSERT INTO Category VALUES(NULL, NOW(), "CCCC")
+INSERT INTO Category VALUES(NULL, NOW(), "DDDD")
+INSERT INTO Category VALUES(NULL, NOW(), "EEEE")
+INSERT INTO Category_to_Article VALUES(NULL, 1, 1)
+INSERT INTO Category_to_Article VALUES(NULL, 1, 1)
+INSERT INTO Category_to_Article VALUES(NULL, 2, 2)
+INSERT INTO Category_to_Article VALUES(NULL, 3, 3)
+INSERT INTO Category_to_Article VALUES(NULL, 3, 3)
+INSERT INTO Tag VALUES(NULL, 1.0, "AAAA")
+INSERT INTO Tag VALUES(NULL, 2.0, "BBBB")
+INSERT INTO Tag VALUES(NULL, 3.0, "CCCC")
+INSERT INTO Tag VALUES(NULL, 4.0, "DDDD")
+INSERT INTO Tag VALUES(NULL, 5.0, "EEEE")
+INSERT INTO Tag_to_Category VALUES(NULL, 1, 1)
+INSERT INTO Tag_to_Category VALUES(NULL, 1, 1)
+INSERT INTO Tag_to_Category VALUES(NULL, 2, 2)
+INSERT INTO Tag_to_Category VALUES(NULL, 3, 3)
+INSERT INTO Tag_to_Category VALUES(NULL, 3, 3)
+INSERT INTO User VALUES(NULL, "AAAA", "AAAA", 1.0)
+INSERT INTO User VALUES(NULL, "BBBB", "BBBB", 2.0)
+INSERT INTO User VALUES(NULL, "CCCC", "CCCC", 3.0)
+INSERT INTO User VALUES(NULL, "DDDD", "DDDD", 4.0)
+INSERT INTO User VALUES(NULL, "EEEE", "EEEE", 5.0)
+
+5.
+Exported.
+
+6.
+CREATE TABLE IF NOT EXISTS Category_part1 (id INT NOT NULL AUTO_INCREMENT, date_created_on DATE, PRIMARY KEY(id))
+CREATE TABLE IF NOT EXISTS Category_part2 (id INT NOT NULL AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id))
+INSERT INTO Category_part1 VALUES (NULL, '2014-04-28')
+INSERT INTO Category_part2 VALUES (NULL, 'AAAA')
+INSERT INTO Category_part1 VALUES (NULL, '2014-04-28')
+INSERT INTO Category_part2 VALUES (NULL, 'BBBB')
+INSERT INTO Category_part1 VALUES (NULL, '2014-04-28')
+INSERT INTO Category_part2 VALUES (NULL, 'CCCC')
+INSERT INTO Category_part1 VALUES (NULL, '2014-04-28')
+INSERT INTO Category_part2 VALUES (NULL, 'DDDD')
+INSERT INTO Category_part1 VALUES (NULL, '2014-04-28')
+INSERT INTO Category_part2 VALUES (NULL, 'EEEE')
+
+7.
+Exported.
+
