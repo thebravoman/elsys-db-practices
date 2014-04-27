@@ -1,0 +1,72 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"PRICE" BLOB, 
+	"PUBLISHED_ON" DATE, 
+	"NAME" VARCHAR2(204 BYTE)
+   ) 
+   
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"CREATED_BY" VARCHAR2(20 BYTE), 
+	"NAME" VARCHAR2(20 BYTE)
+   ) 
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   )
+   
+   
+   
+  CREATE TABLE "ELSYS"."TAG_ARTICLE" 
+   (	"T_ID" NUMBER, 
+	"A_ID" NUMBER
+   )
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"CATEGORY_ID" NUMBER, 
+	"PICTURE_URL" VARCHAR2(20 BYTE), 
+	"PASSWORD" VARCHAR2(200 BYTE), 
+	"TAG_ID" NUMBER
+   )
+   
+   
+   
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, NAME) VALUES ('1', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'cqwcq')
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, NAME) VALUES ('2', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'ververc')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, NAME) VALUES ('1', 'aasda', '1d21')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, NAME) VALUES ('2', 'ascxasx', 'dcqwxdwq')
+
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION) VALUES ('1', 'acve', 'vcf23c')
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION) VALUES ('2', '23f2d2', '3cx223')
+
+INSERT INTO "ELSYS"."TAG_ARTICLE" (T_ID, A_ID) VALUES ('1', '1')
+INSERT INTO "ELSYS"."TAG_ARTICLE" (T_ID, A_ID) VALUES ('1', '2')
+INSERT INTO "ELSYS"."TAG_ARTICLE" (T_ID, A_ID) VALUES ('2', '2')
+
+
+INSERT INTO "ELSYS"."USERS" (ID, NAME, CATEGORY_ID, PICTURE_URL, PASSWORD, TAG_ID) VALUES ('1', 'qw', '1', 'ascasc', 'ascas', '1')
+INSERT INTO "ELSYS"."USERS" (ID, NAME, CATEGORY_ID, PICTURE_URL, PASSWORD, TAG_ID) VALUES ('2', 'as', '2', 'as a as', ' asc', '1')
+
+select t.id from tag t, category c, users u
+where c.id = 1 and
+c.id = u.category_id and
+u.tag_id = t.id;
+
+CREATE TABLE users_PART1(name VARCHAR2(20));
+insert into users_PART1(name) select name from users;	
+ALTER TABLE users DROP COLUMN name;	
+alter table users  rename to users_part2;	
+
+select a.id  from ARTICLE a, USERS_PART2 u, TAG_ARTICLE ta
+where u.id = 1 and
+u.TAG_ID = ta.T_ID and
+ta.A_ID = a.ID;
+
+
+

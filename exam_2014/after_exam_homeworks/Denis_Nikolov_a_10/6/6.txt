@@ -1,0 +1,80 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"PUBLISHED_ON" DATE, 
+	"URL" VARCHAR2(20 BYTE), 
+	"CREATED_ON" DATE, 
+	"CATEGORY_ID" NUMBER
+   );
+   
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"CREATED_BY" VARCHAR2(20 BYTE)
+   ) ;
+   
+   
+   
+   CREATE TABLE "ELSYS"."CATEGORY_TAG" 
+   (	"C_ID" NUMBER, 
+	"T_ID" NUMBER
+   ) ;
+   
+   
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"SECOND_PRIORITY" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE)
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"PASSWORD" VARCHAR2(20 BYTE), 
+	"PICTURE_URL" VARCHAR2(20 BYTE), 
+	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE)
+   ) ;
+   
+   
+    CREATE TABLE "ELSYS"."USER_ARTICLE" 
+   (	"U_ID" NUMBER, 
+	"A_ID" NUMBER
+   );
+   
+
+  
+INSERT INTO "ELSYS"."USERS" (PASSWORD, PICTURE_URL, ID, NAME) VALUES ('asdasd', '1111', '1', '1a');
+INSERT INTO "ELSYS"."USERS" (PASSWORD, PICTURE_URL, ID, NAME) VALUES ('qqqqq', '22222', '2', '2b');
+INSERT INTO "ELSYS"."USER_ARTICLE" (U_ID, A_ID) VALUES ('1', '1');
+INSERT INTO "ELSYS"."USER_ARTICLE" (U_ID, A_ID) VALUES ('1', '2');
+INSERT INTO "ELSYS"."USER_ARTICLE" (U_ID, A_ID) VALUES ('2', '1');
+INSERT INTO "ELSYS"."TAG" (ID, SECOND_PRIORITY, NAME) VALUES ('1', '1', 's');
+INSERT INTO "ELSYS"."TAG" (ID, SECOND_PRIORITY, NAME) VALUES ('2', '2', 'x'); 
+INSERT INTO "ELSYS"."CATEGORY" (ID, NAME, CREATED_BY) VALUES ('1', 'aaaaa', 'gosho');
+INSERT INTO "ELSYS"."CATEGORY" (ID, NAME, CREATED_BY) VALUES ('2', 'gggggg', 'pesho') ;
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, CREATED_ON, CATEGORY_ID) VALUES ('1', TO_DATE('12-APR-01', 'DD-MON-RR'), 'a', TO_DATE('12-APR-01', 'DD-MON-RR'), '1');
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, CREATED_ON, CATEGORY_ID) VALUES ('2', TO_DATE('12-APR-01', 'DD-MON-RR'), 's', TO_DATE('12-APR-01', 'DD-MON-RR'), '1');
+INSERT INTO "ELSYS"."CATEGORY_TAG" (C_ID, T_ID) VALUES ('1', '1');
+INSERT INTO "ELSYS"."CATEGORY_TAG" (C_ID, T_ID) VALUES ('1', '2');
+INSERT INTO "ELSYS"."CATEGORY_TAG" (C_ID, T_ID) VALUES ('2', '1');
+
+
+
+select distinct c.id from category c, users u, user_article ua, article a
+where u.id=1 and
+u.id = ua.u_id and
+ua.a_id = a.id;
+
+CREATE TABLE ARTICLE_PART1(created_on date);
+insert into ARTICLE_part1(created on) select a.created_on from article a;	
+ALTER TABLE article DROP COLUMN created_on;	
+alter table ARTICLE  rename to ARTICLE_PART2;	
+
+
+
+select distinct t.id from tag t,  article_part2 ap, category_tag ct
+where ap.id = 1 and
+ap.category_id = ct.c_id and
+ct.t_id = t.id;

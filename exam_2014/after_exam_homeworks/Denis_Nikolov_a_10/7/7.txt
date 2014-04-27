@@ -1,0 +1,35 @@
+create table Article(id NUMBER, published_on DATE, url  VARCHAR2(25), name VARCHAR2(25), u_id NUMBER);
+create table Category(id NUMBER, created_by VARCHAR2(25), description VARCHAR2(25));
+create table Users(id NUMBER, name  VARCHAR2(25), income NUMBER, created_on DATE);
+create table Tag(id NUMBER, name  VARCHAR2(25), priority NUMBER, a_id NUMBER, c_id NUMBER);
+
+
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, NAME, U_ID) VALUES ('1', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'aasc', 'cas', '1')
+INSERT INTO "ELSYS"."ARTICLE" (ID, PUBLISHED_ON, URL, NAME, U_ID) VALUES ('2', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'ccasc', 'asca', '1')
+
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, DESCRIPTION) VALUES ('1', 'casc', 'saca')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, DESCRIPTION) VALUES ('2', 'scasc', 'cascascascascas')
+
+INSERT INTO "ELSYS"."TAG" (ID, NAME, PRIORITY, A_ID, C_ID) VALUES ('1', 'ascascasc', '1', '1', '1')
+INSERT INTO "ELSYS"."TAG" (ID, NAME, PRIORITY, A_ID, C_ID) VALUES ('2', 'ascascasc', '1', '1', '1')
+
+INSERT INTO "ELSYS"."USERS" (ID, NAME, INCOME, CREATED_ON) VALUES ('1', 'ascasc', '11', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+INSERT INTO "ELSYS"."USERS" (ID, NAME, INCOME, CREATED_ON) VALUES ('2', 'aascasasc', '1', TO_DATE('2012-12-12 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+
+
+select t.id from tag t, users u, article a
+where u.id = 1 and
+a.U_ID  = u.id and
+a.id = t.A_ID;
+
+
+CREATE TABLE ARTICLE_PART1(name VARCHAR2(20));
+insert into ARTICLE_part1(name) select name from article;	
+ALTER TABLE article DROP COLUMN name;	
+alter table ARTICLE  rename to ARTICLE_PART2;	
+
+select DISTINCT c.id from category c, tag t, ARTICLE_PART2  a
+where a.id = 1   and 
+a.id = t.A_ID and 
+t.C_ID = c.id;

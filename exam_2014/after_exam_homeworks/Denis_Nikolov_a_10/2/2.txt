@@ -1,0 +1,70 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"PRICE" BLOB, 
+	"URL" VARCHAR2(20 BYTE), 
+	"CONTENT" VARCHAR2(204 BYTE), 
+	"CATEGORY_ID" NUMBER
+   )
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"CREATED_BY" VARCHAR2(20 BYTE), 
+	"PRIORITY" NUMBER
+   ) 
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"DESCRIPTION" VARCHAR2(20 BYTE)
+   )
+   
+     CREATE TABLE "ELSYS"."USER_CATEGORY" 
+   (	"U_ID" NUMBER, 
+	"C_ID" NUMBER
+   )
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+	"NAME" VARCHAR2(20 BYTE), 
+	"AGE" NUMBER, 
+	"TAG_ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(200 BYTE)
+   ) 
+   
+
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, URL, CONTENT, CATEGORY_ID) VALUES ('1', 'aasd', 'cqwcq', '1')
+INSERT INTO "ELSYS"."ARTICLE" (ID, URL, CONTENT, CATEGORY_ID) VALUES ('2', 'qwdqwd', 'ververc', '1')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, PRIORITY) VALUES ('1', 'aasda', '1')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, PRIORITY) VALUES ('2', 'ascxasx', '1')
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION) VALUES ('1', 'acve', 'vcf23c')
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION) VALUES ('2', '23f2d2', '3cx223')
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('1', '1')
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('1', '2')
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('2', '2')
+
+INSERT INTO "ELSYS"."USERS" (ID, NAME, AGE, DESCRIPTION, TAG_ID) VALUES ('1', 'qw', '111', 'scsdc', '1')
+INSERT INTO "ELSYS"."USERS" (ID, NAME, AGE, DESCRIPTION, TAG_ID) VALUES ('2', 'as', '11', 'vcdsc', '2')
+
+
+
+select c.id FROM  ARTICLE a, CATEGORY c, tag t, users u, USER_CATEGORY uc
+where t.id = 1 and
+t.id = u.TAG_ID and
+u.ID = uc.U_ID and
+uc.C_ID = c.id;
+
+
+
+CREATE TABLE users_PART1(description VARCHAR2(200));
+insert into users_PART1(description) select description from users;	
+ALTER TABLE users DROP COLUMN description;	
+alter table users  rename to users_part2;	
+
+
+select a.id from users_part2 u, USER_CATEGORY ua, article a, category c
+where u.id = 1 and
+u.id = ua.U_ID and
+ua.C_ID = a.CATEGORY_ID and
+c.id = a.CATEGORY_ID;

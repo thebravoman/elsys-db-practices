@@ -1,0 +1,44 @@
+
+
+create table Article(id NUMBER, created_on DATE, content VARCHAR2(255), name VARCHAR2(255), tag_id NUMBER);
+create table Category(id NUMBER, created_by VARCHAR2(255), priority NUMBER);
+create table Users(id NUMBER, name VARCHAR2(255), description VARCHAR2(255), picture_url VARCHAR2(255));
+create table Tag(id NUMBER, name VARCHAR2(255), description VARCHAR2(255), user_id  NUMBER);
+create table User_Category(u_id NUMBER, c_id NUMBER);
+
+
+
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, CREATED_ON, CONTENT, NAME, TAG_ID) VALUES ('1', TO_DATE('2012-11-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'ascasc', 'scas', '1')
+INSERT INTO "ELSYS"."ARTICLE" (ID, CREATED_ON, CONTENT, NAME, TAG_ID) VALUES ('2', TO_DATE('2012-11-11 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'casc', 'ascasc', '1')
+
+
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, PRIORITY) VALUES ('1', '2012-11-11', '213')
+INSERT INTO "ELSYS"."CATEGORY" (ID, CREATED_BY, PRIORITY) VALUES ('1', '2012-11-11', '12312')
+
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION, USER_ID) VALUES ('1', 'asca', 'ascascas', '1')
+INSERT INTO "ELSYS"."TAG" (ID, NAME, DESCRIPTION, USER_ID) VALUES ('2', 'ascasc', 'cascs', '1')
+
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('1', '1')
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('1', '2')
+INSERT INTO "ELSYS"."USER_CATEGORY" (U_ID, C_ID) VALUES ('2', '1')
+
+INSERT INTO "ELSYS"."USERS" (ID, NAME, DESCRIPTION, PICTURE_URL) VALUES ('1', 'aascas', 'cascasc', 'casc')
+INSERT INTO "ELSYS"."USERS" (ID, NAME, DESCRIPTION, PICTURE_URL) VALUES ('1', 'cascasc', 'aascccasas', 'ascacas')
+
+select distinct u.id from users u, article a, tag t
+where a.id = 1 and
+a.tag_id = t.id and
+t.user_id = u.id;
+
+CREATE TABLE tag_PART1(description VARCHAR2(20));
+insert into tag_part1(description) select description from tag;	
+ALTER TABLE tag DROP COLUMN description;	
+alter table tag  rename to tag_PART2;
+
+
+select DISTINCT c.id from TAG_PART2 t, category c, article a, USER_CATEGORY uc, users u
+where t.id = 1 and
+a.tag_id = t.id and
+t.USER_ID = uc.U_ID and 
+U_id = u.id

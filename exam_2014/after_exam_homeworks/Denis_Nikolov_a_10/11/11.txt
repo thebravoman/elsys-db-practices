@@ -1,0 +1,64 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"url" VARCHAR2(20 BYTE), 
+	"CONTENT" VARCHAR2(20 BYTE), 
+	"NAME" VARCHAR2(20 BYTE)
+  
+   );
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"DESCRIPTION" VARCHAR2(20 BYTE), 
+	"DATE_CREATED_ON" DATE
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"PRIORITY" INT       , 
+	"NAME" VARCHAR2(20 BYTE)
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+   "INCOME" FLOAT, 
+	"DESCRIPTION" VARCHAR2(20 BYTE), 
+	"CREATED_ON" DATE
+   ) ; 
+
+alter table tag add category_id number;
+alter table article add tag_id number;
+
+INSERT INTO "ELSYS"."ARTICLE" (ID, "url", CONTENT, NAME, TAG_ID) VALUES ('1', 'fh', 'vvcn', 'vn', '1')
+INSERT INTO "ELSYS"."ARTICLE" (ID, "url", CONTENT, NAME, TAG_ID) VALUES ('2', 'xdg', 'dg', 'dg', '2')
+INSERT INTO "ELSYS"."TAG" (ID, PRIORITY, NAME, CATEGORY_ID) VALUES ('1', '11', 'ffh', '1')
+INSERT INTO "ELSYS"."TAG" (ID, PRIORITY, NAME, CATEGORY_ID) VALUES ('2', '22', 'edfe', '2')
+INSERT INTO "ELSYS"."USERS" (ID, INCOME, DESCRIPTION, CREATED_ON) VALUES ('1', 'edf', 'eedg', TO_DATE('2011-02-02 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+INSERT INTO "ELSYS"."USERS" (ID, INCOME, DESCRIPTION, CREATED_ON) VALUES ('2', '22', 'rfy', TO_DATE('2013-02-09 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+INSERT INTO "ELSYS"."CATEGORY" (ID, DESCRIPTION, DATE_CREATED_ON) VALUES ('1', 'fn', TO_DATE('2011-03-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+INSERT INTO "ELSYS"."CATEGORY" (ID, DESCRIPTION, DATE_CREATED_ON) VALUES ('2', 'dgd', TO_DATE('2014-02-03 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))
+
+select distinct tag.id from users,  tag, article, category
+where tag.category_id = category.id and
+tag.id = article.TAG_ID and
+users.id = 2;
+
+CREATE TABLE category_part1(description VARCHAR2(20 BYTE));
+insert into CATEGORY_PART1(description) select c.description from category c;	
+ALTER TABLE category DROP COLUMN description;	
+alter table category  rename to category_part2;	
+
+select tag.ID from  CATEGORY_PART2,tag, users, article
+where tag.id = 1 and category.id = tag.category_id;
+
+
+
+
+
+
+
+
+
+

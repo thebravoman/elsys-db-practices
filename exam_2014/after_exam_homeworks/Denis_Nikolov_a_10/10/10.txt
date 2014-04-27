@@ -1,0 +1,72 @@
+
+CREATE TABLE "ELSYS"."ARTICLE" 
+   (	"ID" NUMBER, 
+	"published_on" date, 
+	"created_on" date, 
+	"price" float
+  
+   );
+   
+    CREATE TABLE "ELSYS"."CATEGORY" 
+   (	"ID" NUMBER, 
+	"name" VARCHAR2(20 BYTE), 
+	"DATE_CREATED_ON" DATE
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."TAG" 
+   (	"ID" NUMBER, 
+	"SECOND_PRIORITY" INT       , 
+	"NAME" VARCHAR2(20 BYTE)
+   ) ;
+   
+   
+   CREATE TABLE "ELSYS"."USERS" 
+   (	"ID" NUMBER, 
+   "INCOME" FLOAT, 
+	"DESCRIPTION" VARCHAR2(20 BYTE), 
+	"name" VARCHAR2(20 BYTE)
+   ) ; 
+   
+    CREATE TABLE "ELSYS"."Tag_user" 
+   (	"tag_id" NUMBER, 
+   "user_id" number
+   ) ; 
+
+alter table tag add users_id number;
+
+
+INSERT INTO "ELSYS"."USERS" (ID, INCOME, DESCRIPTION, "name") VALUES ('1', '33', 'gr', 'fg')
+INSERT INTO "ELSYS"."USERS" (ID, INCOME, DESCRIPTION, "name") VALUES ('22', '33', 'gfh', 'gfh')
+INSERT INTO "ELSYS"."Tag_user" ("tag_id", "user_id") VALUES ('1', '1')
+INSERT INTO "ELSYS"."Tag_user" ("tag_id", "user_id") VALUES ('2', '2')
+INSERT INTO "ELSYS"."TAG" (ID, SECOND_PRIORITY, NAME, USERS_ID) VALUES ('1', '11', 'dfg', '1')
+INSERT INTO "ELSYS"."TAG" (ID, SECOND_PRIORITY, NAME, USERS_ID) VALUES ('2', '222', 'fhg', '2')
+INSERT INTO "ELSYS"."ARTICLE" (ID, "published_on", "created_on", "price") VALUES ('1', TO_DATE('2011-02-02 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2011-02-01 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '22')
+INSERT INTO "ELSYS"."ARTICLE" (ID, "published_on", "created_on", "price") VALUES ('2', TO_DATE('2012-02-09 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_DATE('2013-08-05 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '5')
+
+
+
+select distinct user.id from users,  tag, article, category
+where tag.tag_id = tag.id and
+users.id = tag.user_id and
+article.id = 2;
+
+CREATE TABLE tag_part1(second_priority VARCHAR2(20 BYTE));
+insert into tag_PART1(second_priority) select t.second_priority from category tag;	
+ALTER TABLE tag DROP COLUMN tag_priority;	
+alter table tag  rename to tag_part2;	
+
+select tag.ID from tag, users, article
+where tag.tag_id = tag.id and
+users.id = tag.user_id and
+and tag.id = 1;
+
+
+
+
+
+
+
+
+
