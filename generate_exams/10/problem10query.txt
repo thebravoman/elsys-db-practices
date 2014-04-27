@@ -1,0 +1,73 @@
+create database problem10;
+
+use problem10;
+
+create table article (
+   id int unsigned not null primary key auto_increment,
+	 published_on date,
+	 price double
+);
+
+create table category (
+   id int unsigned not null primary key auto_increment,
+	 published_on date,
+	 name varchar(20)
+);
+
+create table user (
+   id int unsigned not null primary key auto_increment,
+	 created_on date,
+	 name varchar(20),
+	 password varchar(20)
+);
+
+create table tag (
+   id int unsigned not null primary key auto_increment,
+	 description varchar(20),
+	 name varchar(20)
+);
+
+create table user_article (
+    id int unsigned not null primary key auto_increment,
+    article_id int unsigned not null,
+    user_id int unsigned not null
+);
+
+alter table category add column article_id int unsigned not null;
+alter table tag add foreign key (id) references category(id);
+
+insert into article (id, published_on, price) VALUES
+	(1, '2014-03-14', 2.50),
+	(2, '2013-12-13', 8.20);
+
+insert into category (id, date_created_on, name, article_id) VALUES
+	(1, '2012-02-05', 'some name', 2),
+	(2 ,'2013-01-31','srsgrg', 1);
+
+insert into user (id,created_on,name,password) VALUES
+	(1,'2014-04-02','sduh0','123'),
+	(2,'2014-03-05','sgss','123');
+
+insert into tag (id,description,name) values
+	(1,'sfsfsfsdfdf','gsgse'),
+	(2,'drdrgdrgdrg','sesefes');
+
+insert into user_article(id, article_id, user_id) values
+  (1, 1, 2),
+  (2, 2, 1);
+
+select article.* from category 
+  join article on category.article_id=article.id 
+  join tag on tag.id=category.id 
+  where tag.name='gsgse';
+
+create table Category_part1 (id int unsigned not null auto_increment, name varchar(20), primary key (id));
+
+create table Category_part2 (id int unsigned not null auto_increment, date_created_on date, article_id int unsigned not null, primary key (id));
+
+insert into Category_part1 (name) select name FROM category;
+
+insert into Category_part2 (date_created_on, article_id) select date_created_on, article_id from category;
+
+select user.* from user_article join user on user.id = user_article.user_id join article on article.id = user_article.article_id
+    -> where article.id = (select Category_part2.article_id from Category_part2 join Category_part1 on Category_part2.id = Category_part1.id where Category_part1.name = 'some name');
