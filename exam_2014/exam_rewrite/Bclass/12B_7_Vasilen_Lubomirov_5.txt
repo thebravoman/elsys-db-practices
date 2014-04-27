@@ -1,0 +1,2 @@
+cc-c-pipe-O-W-Wall-Wppinter-arith-Who-unused-parameter-Werror-g-Isrc/core-Isrc/event-Isrc/event/modules-Isrc/os/unix-Iobjs-I src/http-Isrc/http/modules\-objsobjs/src/http/modules/ngx_http_upstream_ip_hash_module.cc-c-pipe-O-W-Wall-Wpointer-arith-Who-unused-para,eter-Werror-g-Isrc/core-Isrc/event-Isrc/event/modules-Isrc/os/unix-I objs-I src/http-I src/http/modules\
+	-oobjs/src/http/modules/ngx_http_upstream_least_conn_module.o\src/http/modules/nfx_http_upstream_least_conn_module.c

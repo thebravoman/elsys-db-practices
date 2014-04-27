@@ -1,0 +1,47 @@
+А_10_Денис Евгениев Николов
+Technological School 'Electronic Systems'
+Sofia, 2014
+Databases
+Kiril Mitov
+
+1. Create the following tables
+Create table Article with columns
+	 created_on:date,	 price:currency,	 content:long string,
+Create table Category with columns
+	 created_by:string,	 date_created_on:date,
+Create table User with columns
+	 age:integer,	 picture_url:string,	 income:float,
+Create table Tag with columns
+	 priority:int,	 name:varchar,
+As a result SQL queries must be created
+
+2. Connect the tables in the following way
+Category has a many to one connection to Tag
+Tag has a many to many connection to Article
+Article has a many to one connection to User
+As a result SQL queries must be created
+
+
+3. Insert
+Add at least two records in each table
+As a result SQL queries must be created
+
+4. Answer the following question
+Which are the Article(s) for a given Category
+As a result SQL query must be created
+
+5. Export the Data Base to SQL or CSV
+
+6. Execute the following migration
+Separate Tag on two tables
+Tag_part1 containing priority
+Tag_part2 containing all the other fields
+As a result SQL queries+code in other programming language must be create
+
+7. Export the Data Base to SQL or CSV
+
+8. Answer the following question
+Which are the User(s) for a given Tag
+As a result SQL query must be created
+
+

@@ -1,0 +1,11 @@
+X2MxHdyVlG - 5 min
+
+a3DNIuul2iHQUC5AUtow - 3 min
+
+KoYnJ0Kw9LjrA4erK3krox9tCezTGAHjC9Fh6XyqHUfsINIkxyKbxMcBQQMokQtKXAEU6mF4HLgrvitl - 3 min
+
+AHIAdwB8AIEAhgCLAJAAlQCaAJ8ApACpAK4AsgC3ALwAwQDGAMsA0ADVANsA4ADlAOsA8AD2APsBAQEHAQ0BEwEZAR8BJQErATIBOAE+AUUBTAFSAVkBYAFnAW4BdQF8AYMBiwGSAZoBoQGpAbEBuQHBAckB0QHZAeEB6QHyAfoCAwIMAhQCHQImAi8COAJBAksCVAJdAmcCcQJ6AoQCjgKYAqICrAK2AsECywLVAuAC6wL1AwADCwMWAyEDLQM4A0MDTwNaA2YDcgN+A4oDlgOiA64DugPHA9MD4APsA/kEBgQT - 9min
+
+#defineNGX_RESOLVER_UDP_SIZE4096typedefstruct{u_charident_hi;u_charident_lo;u_charflags_hi;u_charflags_lo;u_charnqs_hi;u_charnqs_lo;u_charnan_hi;u_charnan_lo;u_charnns_hi;u_charnns_lo;u_charnar_hi;u_charnar_lo;}ngx_resolver_query_t;typedefstruct{u_chartype_hi;u_chartype_lo;u_charclass_hi;u_charclass_lo;}ngx_resolver_qs_t;typedefstruct{u_chartype_hi;u_chartype_lo;u_charclass_hi;
+
+cc-c-pipe-O-W-Wall-Wpointer-arith-Wno-unused-parameter-Werror-g-Isrc/core-Isrc/event-Isrc/event/modules-Isrc/os/unix-Iobjs-Isrc/http-Isrc/http/modules\-oobjs/src/http/modules/ngx_http_upstream_ip_hash_module.o\src/http/modules/ngx_http_upstream_ip_hash_module.ccc-c-pipe-O-W-Wall-Wpointer-arith-Wno-unused-parameter-Werror-g-Isrc/core-Isrc/event-Isrc/event/modules-Isrc/os/unix-Iobjs-Isrc/http-Isrc/http/modules\-oobjs/src/http/modules/ngx_http_upstream_least_conn_module.o\src/http/modules/ngx_http_upstream_least_conn_module.c
