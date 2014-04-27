@@ -1,0 +1,29 @@
+create table Article(id int, name varchar(20), url varchar(20), content v
+archar(80));
+create table Category(id int, date_created_on date, name varchar(20));
+create table User(id int, password varchar(40), description varchar(80
+),income float);
+create table Tag(id int, second_priority float,name varchar(20));
+create table Tag_Category( tag_id int, category_id int);
+create table Category_Article(category_id int, article_id int);
+create table Article_User(article_id int, user_id int);
+
+
+insert into Article (id, name, url, content) values (2, "didi", "abv", "bla");
+insert into Category(id, date_created_on, name) values (2, "2014-05-02", "didi");
+insert into User(id, password, description, income) values (2, "didi", "take that", 2.22);
+insert into Tag(id, second_priority, name) values (2, 2.22, "didi");
+insert into Tag_Category(tag_id, category_id) values (1, 2);
+insert into Category_Article(category_id, article_id) values (1, 2);
+insert into Article_User( article_id, user_id) values (1, 2);
+
+insert into Article (id, name, url, content) values (3, "krisi", "abg", "blab");
+insert into Category(id, date_created_on, name) values (3, "2014-04-03", "krisi");
+insert into User(id, password, description, income) values (3, "krisi", "take stop", 3.33);
+insert into Tag(id, second_priority, name) values (3, 3.33, "krisi");
+insert into Tag_Category(tag_id, category_id) values (2, 1);
+insert into Category_Article(category_id, article_id) values (2, 1);
+insert into Article_User( article_id, user_id) values (2, 1);
+
+slect article.id from article, category, user, tag, tag_category, category_article, article_user where tag_category.category_id= category.id 
+and tag_category.tag_id=tag.id and 
