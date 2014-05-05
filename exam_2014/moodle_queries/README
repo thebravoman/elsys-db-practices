@@ -1,0 +1,19 @@
+1. Find all the teachers for all the groups.
+The result should contain the following columns: 
+name of group | name of course | first name of teacher | last name of teacher | size of group
+
+2. Find all groups with two teachers
+The result should contain the following columns:
+name of group | first + last name of first teacher| first + last name of second teacher
+
+3. Find username of students given part of hist first or last name
+The result should contain 
+
+4. Find all the students that does not have have a value for a specific grade in all the groups
+The result should contain the following columns:
+name of the group | first + last name of the student
+
+5. Find all the students for all groups that have never logged in
+The result should contain the following columns:
+name of the group | name of course | first + last name of the student | first + last name of teacher
+
