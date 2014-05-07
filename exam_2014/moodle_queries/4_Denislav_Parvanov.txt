@@ -1,0 +1,20 @@
+4. Find all the students for all groups that have never logged in
+The result should contain the following columns:
+name of the group | name of course | first + last name of the student 
+
+
+SELECT DISTINCT mdl_groups.name, mdl_course.fullname, mdl_user.firstname, mdl_user.lastname
+FROM mdl_groups, mdl_course, mdl_user, mdl_user_enrolments, mdl_enrol, mdl_enrol_flatfile, mdl_role, mdl_groups_members, mdl_log
+WHERE 
+mdl_user_enrolments.userid = mdl_user.id	AND
+mdl_user_enrolments.enrolid = mdl_enrol.id	AND
+mdl_groups_members.userid = mdl_user.id		AND
+mdl_groups_members.groupid = mdl_groups.id	AND
+mdl_enrol.courseid = mdl_course.id			AND
+mdl_enrol_flatfile.courseid = mdl_course.id	AND
+mdl_enrol_flatfile.userid = mdl_user.id		AND
+mdl_enrol_flatfile.roleid = mdl_role.id		AND
+mdl_groups.courseid = mdl_course.id			AND
+mdl_role.shortname = 'student'				AND
+mdl_log.userid = mdl_user.id 				AND
+mdl_log.action <> 'login'
