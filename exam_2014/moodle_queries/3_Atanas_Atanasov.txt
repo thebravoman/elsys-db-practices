@@ -1,0 +1,11 @@
+3. Find all the students that does not have have a value for a specific grade in all the groups
+The result should contain the following columns:
+name of the group | first + last name of the student
+
+select distinct g.name as Groupname, CONCAT( u.firstname , ' ' ,u.lastname ) as name from mdl_grade_grades gg, mdl_groups g, mdl_groups_members gm, mdl_user u, mdl_course c
+where gm.groupid = g.id and
+gm.userid = u.id  and
+g.courseid = c.id and 
+gg.userid = u.id and
+isnull(gg.finalgrade) and
+u.deleted = 0;
