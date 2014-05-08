@@ -1,0 +1,12 @@
+SELECT DISTINCT mdl_groups.name, Concat(mdl_user.firstname,mdl_user.lastname) AS "First teacher", Concat(mdl_user2.firstname, mdl_user2.lastname) AS "Second teacher" FROM mdl_groups INNER JOIN mdl_user, mdl_role, mdl_role_sortorder, mdl_groups_members, mdl_groups as mdl_groups2, mdl_user as mdl_user2, mdl_groups_members as mdl_groups_members2, mdl_role_sortorder as mdl_role_sortorder2 WHERE
+mdl_groups_members.groupid = mdl_groups.id AND
+mdl_groups_members.userid = mdl_user.id AND
+mdl_user.id = mdl_role_sortorder.userid AND
+mdl_role_sortorder.roleid = 4 AND
+mdl_groups_members2.groupid = mdl_groups2.id AND
+mdl_groups_members2.userid = mdl_user2.id AND
+mdl_user2.id = mdl_role_sortorder2.userid AND
+mdl_role_sortorder2.roleid = 4 AND
+mdl_groups.id = mdl_groups2.id AND
+mdl_user.id <> mdl_user2.id
+GROUP BY mdl_groups.name;
