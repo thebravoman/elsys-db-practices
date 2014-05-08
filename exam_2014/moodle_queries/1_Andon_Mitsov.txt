@@ -1,0 +1,7 @@
+1. Find all the teachers for all the groups.
+The result should contain the following columns: 
+name of group | name of course | first name of teacher | last name of teacher | size of group
+
+select groups.name as group_name,course.fullname as course_name, user.firstname, user.lastname, (select count(groups_members.userid) from mdl_groups as groups, mdl_groups_members as groups_members where groups.id = groups_members.groupid and groups.name = group_name) as size from mdl_user as user join mdl_groups_members as groups_members on user.id = groups_members.userid join mdl_groups as groups on groups.id = groups_members.groupid join mdl_course as course on course.id = groups.courseid join mdl_role_sortorder as role_sort on role_sort.userid = user.id join mdl_role as role on role.id=role_sort.roleid where role.name = "Teacher";
+
+
