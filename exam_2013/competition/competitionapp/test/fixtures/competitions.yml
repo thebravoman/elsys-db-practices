@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  date: 2013-04-11 23:30:06
+  place: MyString
+  budget: 1.5
+
+two:
+  date: 2013-04-11 23:30:06
+  place: MyString
+  budget: 1.5

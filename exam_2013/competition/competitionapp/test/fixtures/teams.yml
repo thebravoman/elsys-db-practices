@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  string: 
+  payed: false
+  years_experience: 1
+
+two:
+  string: 
+  payed: false
+  years_experience: 1

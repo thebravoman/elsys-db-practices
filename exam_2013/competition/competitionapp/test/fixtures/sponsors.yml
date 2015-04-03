@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  donated: 
+  years_participating: 1
+
+two:
+  name: MyString
+  donated: 
+  years_participating: 1

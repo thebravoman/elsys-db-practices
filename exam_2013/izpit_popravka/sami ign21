@@ -1,0 +1,18 @@
+create database izpit;
+use izpit;
+create table Internship(id int not null auto_increment, c_id int, primary key (id));
+create table Developer(id int not null auto_increment, c_id int, primary key(id));
+create table Company(id int not null auto_increment, ime varchar(64), primary key (id));
+create table dev_int(id int not null auto_increment, d_id int, i_id int, primary key(id));
+
+insert into Internship (c_id) values (1);
+insert into Internship (c_id) values (1);
+insert into Developer (c_id) values (1);
+insert into Developer (c_id) values (2);
+insert into Company (ime) values ('purva');
+insert into Company (ime) values ('vtora');
+insert into dev_int(d_id, i_id) values (1,1);
+insert into dev_int(d_id, i_id) values (1,2);
+
+select count(*) from Developer join dev_int on Developer.c_id=Internship.c_id;
+
