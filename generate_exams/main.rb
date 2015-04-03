@@ -20,12 +20,19 @@ end
 
 class Article < Table
 	def initialize
-		super "Article"
+		super "Article_#{ARGV[0]}"
 		self.fields = Article.possible_fields
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("published_on","date"),Field.new("price","currency"),Field.new("created_on","date"),Field.new("url","string"),Field.new("content","long string")].shuffle[0..2]
+		[	Field.new("name","varchar"),
+			Field.new("published_on","date"),
+			Field.new("price","currency"),
+			Field.new("created_on","date"),
+			Field.new("url","string"),
+			Field.new("content","long string"),
+			Field.new("visible","boolean"),
+			Field.new("password","string")].shuffle[0..2]
 	end
 end
 
@@ -36,7 +43,11 @@ class Category < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("description","varchar"),Field.new("date_created_on","date"),Field.new("priority","double"),Field.new("created_by","string")].shuffle[0..1]
+		[	Field.new("name","varchar"),
+			Field.new("description","long text"),
+			Field.new("date_created_on","date"),
+			Field.new("priority","double"),
+			Field.new("created_by","string")].shuffle[0..1]
 	end
 end
 
@@ -47,7 +58,15 @@ class User < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("password","varchar"),Field.new("created_on","date"),Field.new("age","integer"),Field.new("income","float"),Field.new("picture_url","string"),Field.new("description","long text")].shuffle[0..2]
+		[	Field.new("name","varchar"),
+			Field.new("password","varchar"),
+			Field.new("created_on","date"),
+			Field.new("age","integer"),
+			Field.new("income","float"),
+			Field.new("picture_url","string"),
+			Field.new("description","long text"),
+			Field.new("twitter","varchar"),
+			Field.new("gender","varchar(6)")].shuffle[0..2]
 	end
 end
 
@@ -58,7 +77,11 @@ class Tag < Table
 	end
 	
 	def self.possible_fields
-		[Field.new("name","varchar"),Field.new("priority","int"),Field.new("description","varchar"),Field.new("second_priority","float")].shuffle[0..1]
+		[	Field.new("name","varchar"),
+			Field.new("priority","int"),
+			Field.new("description","varchar"),
+			Field.new("hash","varchar(16)"),
+			Field.new("second_priority","float")].shuffle[0..1]
 	end
 end
 
@@ -91,9 +114,9 @@ class Main
 		puts "1. Create the following tables"
 		
 		tables.each do |table|
-			result = "Create table #{table.name} with columns\n"
+			result = "Create table #{table.name}\n with columns:\n"
 			table.fields.each do |field|
-				result << "\t #{field.name}:#{field.type},"
+				result << "\t #{field.name}->#{field.type},"
 			end
 			result << "\n"
 			puts result
@@ -125,6 +148,7 @@ class Main
 		end
 		puts connections_string
 		puts "As a result SQL queries must be created"
+		puts "Write the queries from point 1 and 2 in a file called creates.sql"
 		puts "\n"
 		connections
 	end
@@ -134,6 +158,7 @@ class Main
 		puts "3. Insert"
 		puts "Add at least two records in each table"
 		puts "As a result SQL queries must be created"
+		puts "Write the queries from point 3 in a file called inserts.sql"
 		puts "\n"
 	end
 	
@@ -141,6 +166,7 @@ class Main
 		puts "4. Answer the following question"
 		puts "Which are the #{conns[1].table2.name}(s) for a given #{conns[0].table1.name}"
 		puts "As a result SQL query must be created"
+		puts "Write the queries from points 4 in a file called selects1.sql"
 		puts "\n"
 	end
 	
@@ -150,7 +176,8 @@ class Main
 		puts "Separate #{table.name} on two tables"
 		puts "#{table.name}_part1 containing #{table.fields[rand(table.fields.size)].name}"
 		puts "#{table.name}_part2 containing all the other fields"
-		puts "As a result SQL queries+code in other programming language must be create"
+		puts "As a result SQL queries+code in other programming language must be create."
+		puts "Write the queries from points 6 in a file called migrates.sql"
 		puts 
 	end
 
@@ -158,6 +185,7 @@ class Main
 		puts "8. Answer the following question"
 		puts "Which are the #{conns[2].table2.name}(s) for a given #{conns[1].table1.name}"
 		puts "As a result SQL query must be created"
+		puts "Write the queries from points 8 in a file called selects2.sql"
 		puts "\n"
 	end
 	
@@ -174,6 +202,13 @@ class Main
 		puts "7. Export the Data Base to SQL or CSV"
 		puts "\n"
 		generate_second_select conns
+		puts "9. Draw a picture of the database"
+		puts "\n"
+		puts "10. Add all the files in a folder called FirstName_LastName_Class_Number"
+		puts "Create a zip from this folder and name the zip FirstName_LastName_Class_Number.zip"
+		puts "(here FirstName is your first name, LastName is your last name, class is A or B and Number is your number in class)"
+		puts ""
+		puts "Good luck and may the force be with you!"
 	end
 	
 end
