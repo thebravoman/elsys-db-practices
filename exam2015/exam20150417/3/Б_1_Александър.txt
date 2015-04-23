@@ -1,0 +1,63 @@
+Б_1_Александър
+Technological School 'Electronic Systems'
+Sofia, 2015
+Databases
+Kiril Mitov & Dobromir Ivanov
+
+1. Create the following tables
+Create table Article_0
+ with columns:
+	 password->string,	 url->string,	 published_on->date,
+Create table Category
+ with columns:
+	 description->long text,	 date_created_on->date,
+Create table User
+ with columns:
+	 picture_url->string,	 password->varchar,	 income->float,
+Create table Tag
+ with columns:
+	 name->varchar,	 priority->int,
+As a result SQL queries must be created
+
+2. Connect the tables in the following way
+User has a one to many connection to Article_0
+Article_0 has a many to many connection to Tag
+Tag has a many to many connection to Category
+As a result SQL queries must be created
+Write the queries from point 1 and 2 in a file called creates.sql
+
+
+3. Insert
+Add at least two records in each table
+As a result SQL queries must be created
+Write the queries from point 3 in a file called inserts.sql
+
+4. Answer the following question
+Which are the Tag(s) for a given User
+As a result SQL query must be created
+Write the queries from points 4 in a file called selects1.sql
+
+5. Export the Data Base to SQL or CSV
+
+6. Execute the following migration
+Separate Article_0 on two tables
+Article_0_part1 containing url
+Article_0_part2 containing all the other fields
+As a result SQL queries+code in other programming language must be create.
+Write the queries from points 6 in a file called migrates.sql
+
+7. Export the Data Base to SQL or CSV
+
+8. Answer the following question
+Which are the Category(s) for a given Article_0
+As a result SQL query must be created
+Write the queries from points 8 in a file called selects2.sql
+
+9. Draw a picture of the database
+
+10. Add all the files in a folder called FirstName_LastName_Class_Number
+Create a zip from this folder and name the zip FirstName_LastName_Class_Number.zip
+(here FirstName is your first name, LastName is your last name, class is A or B and Number is your number in class)
+
+Good luck and may the force be with you!
+
