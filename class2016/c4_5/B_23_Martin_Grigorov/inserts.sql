@@ -12,3 +12,8 @@ INSERT INTO Events (name, Date, Location) VALUES ("test1","2016-03-11","v gorata
 INSERT INTO Events (name, Date, Location) VALUES ("test2","2015-04-15","v TUES");
 INSERT INTO Events (name, Date, Location) VALUES ("test3","2014-03-11","asd");
 INSERT INTO Events (name, Date, Location) VALUES ("test4","2016-07-21","fgh");
+
+INSERT INTO user_groups(user_id, groups_id) VALUES (1,2);
+INSERT INTO user_groups(user_id, groups_id) VALUES (1,3);
+INSERT INTO user_groups(user_id, groups_id) VALUES (2,2);
+INSERT INTO user_groups(user_id, groups_id) VALUES (3,2);
