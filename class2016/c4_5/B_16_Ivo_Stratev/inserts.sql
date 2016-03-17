@@ -12,3 +12,13 @@ insert into Events (Date_, Name, Location) values("2015-05-12", "Pesho", "Sofia"
 insert into Events (Date_, Name, Location) values("2014-08-20", "Gosho", "Varna");
 insert into Events (Date_, Name, Location) values("2013-05-21", "Tosho", "Sofia");
 insert into Events (Date_, Name, Location) values("2012-02-25", "Sasho", "Plovdiv");
+
+insert into Groups_Users (User_id, Group_id) values(1, 2);
+insert into Groups_Users (User_id, Group_id) values(2, 2);
+insert into Groups_Users (User_id, Group_id) values(2, 1);
+insert into Groups_Users (User_id, Group_id) values(1, 3);
+
+insert into Events_Groups (Event_id, Group_id) values(1, 2);
+insert into Events_Groups (Event_id, Group_id) values(2, 2);
+insert into Events_Groups (Event_id, Group_id) values(2, 1);
+insert into Events_Groups (Event_id, Group_id) values(1, 3);
