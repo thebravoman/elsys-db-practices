@@ -28,3 +28,9 @@ UNION
 SELECT Users.name, Groups.name FROM Users
 RIGHT JOIN Groups_Users ON User.id = Groups_Users.user_id
 RIGHT JOIN Groups ON Groups.id = Groups_Users.group_id;
+
+#All users without groups
+SELECT User.name FROM Users
+LEFT JOIN Groups_Users ON User.id = Groups_Users.user_id
+WHERE Groups_Users.user_id IS NULL;
+
