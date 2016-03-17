@@ -11,9 +11,9 @@ INSERT INTO Groups(name, date_founded_on) VALUES
 	("OpelDjigit", "2017-02-02 12:00:00");
 	
 INSERT INTO Events(name, date_, location) VALUES
-		("DRAG", "2015-02-02 12:00:00", "12.14, 13.23"),
-		("DRIFT", "2016-02-02 12:00:00", "12.14, 13.23"),
-		("ZAVURSHVANE", "2016-02-02 12:30:00", "12.14, 13.23");
+	("DRAG", "2015-02-02 12:00:00", "12.14, 13.23"),
+	("DRIFT", "2016-02-02 12:00:00", "12.14, 13.23"),
+	("ZAVURSHVANE", "2016-02-02 12:30:00", "12.14, 13.23");
 		
 INSERT INTO Groups_Users (group_id, user_id) VALUES
 	(1,1),
