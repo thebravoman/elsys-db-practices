@@ -1,3 +1,5 @@
+-- INNER JOIN
+
 SELECT Users_.name, Groups_.name 
 FROM Users_ 
 INNER JOIN Groups_Users_ 
