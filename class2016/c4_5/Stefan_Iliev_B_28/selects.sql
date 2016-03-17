@@ -1,11 +1,13 @@
 USE calendar;
 
 SELECT Users.name FROM Users 
-INNER JOIN Groups_Users ON Users.id = Groups_Users.user_id;
+INNER JOIN Groups_Users ON Users.id = Groups_Users.user_id
+INNER JOIN Groups ON Groups_Users.group_id = Groups.id;
 
 SELECT Users.name FROM Users 
 INNER JOIN Groups_Users ON Users.id = Groups_Users.user_id
-INNER JOIN Groups_Events ON Groups_Users.group_id = Groups_Events.group_id;
+INNER JOIN Groups_Events ON Groups_Users.group_id = Groups_Events.group_id
+INNER JOIN Events ON Groups_Events.event_id = Events.id;
 
 SELECT Users.name, Events.name FROM Users 
 INNER JOIN Groups_Users ON Users.id = Groups_Users.user_id
@@ -13,3 +15,7 @@ INNER JOIN Groups_Events ON Groups_Users.group_id = Groups_Events.group_id
 INNER JOIN Event ON Groups_Events.event_id = Events.id
 WHERE Events.name = "AMG";
 
+#LEFT JOIN EXAMPLES
+SELECT Users.name, Groups.name FROM Users
+LEFT JOIN Groups_Users ON User.id = Groups_Users.user_id
+LEFT JOIN Groups ON Groups.id = Groups_Users.group_id;
