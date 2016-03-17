@@ -1,0 +1,30 @@
+CREATE TABLE Users_ (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30),
+	email VARCHAR(40),
+	age INT
+);
+	
+CREATE TABLE Groups_ (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30),
+	founded_on DATE
+);
+	
+CREATE TABLE Events_ (
+	id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name VARCHAR(30),
+	location VARCHAR(40)
+);
+
+CREATE TABLE Users_Groups_ (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    users_id INT,
+    groups_id INT
+);
+
+CREATE TABLE Groups_Events_ (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    groups_id INT,
+    events_id INT
+);
