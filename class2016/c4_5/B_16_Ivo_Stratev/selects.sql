@@ -23,3 +23,8 @@ union
 select Users.Name, Groups.Name from Users
 right join Groups_Users on Groups_Users.User_id = Users.id
 right join Groups on Groups.id = Groups_Users.Group_id;
+
+select Users.Name, Groups.Name from Users
+left join Groups_Users on Groups_Users.User_id = Users.id
+left join Groups on Groups.id = Groups_Users.Group_id
+where Groups.Name is NULL;
