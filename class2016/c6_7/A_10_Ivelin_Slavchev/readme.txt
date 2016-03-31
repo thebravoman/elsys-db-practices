@@ -1,0 +1,1 @@
+A python script to automatically execute sql files in a given directory. The script shows selected data and outputs any encountered errors. Requires mysql.
