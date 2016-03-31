@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# run with task.txt as an argument
+
 path = ARGV[0]
 file_content = ""
 if File.exist?(path) then
