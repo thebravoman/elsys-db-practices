@@ -1,9 +1,20 @@
-import os, sys, subprocess
+import os, sys, subprocess, json
 
 
 database_name = ""
 
 ARG_path = sys.argv[1]
+
+jsonContent = ""
+with open("config.json") as f: jsonContent = f.read()
+jsonData = json.loads(jsonContent)
+
+
+
+PREDEFINED_FILENAMES = jsonData["FileNames"]
+EXECUTION_ORDER = jsonData["ExecutionOrder"]
+DATABASE_INIT_FILE = PREDEFINED_FILENAMES[jsonData["DatabaseInit"]] 
+
 
 def FindDatabaseName(fContent):
 	for line in fContent:
@@ -20,7 +31,7 @@ def HandleFile(filename):
 	with open(filename) as f:
 		for line in f: fContent.append(line.replace("\n",""))
 
-	if "creates" in filename.lower(): 
+	if DATABASE_INIT_FILE in filename.lower(): 
 		global database_name
 		database_name  = FindDatabaseName(fContent)
 		mysql_command = "mysql < %s"%(filename)
@@ -32,9 +43,6 @@ def HandleFile(filename):
 
 
 files = os.listdir(ARG_path)
-
-PREDEFINED_FILENAMES = ["creates.sql","inserts.sql","selects.sql"] #TODO: Move to config
-EXECUTION_ORDER = [0,1,2] 
 FileMap = {}
 
 for file in files: #TODO: Make it recursively walk through directories.
