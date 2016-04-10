@@ -1,0 +1,7 @@
+CREATE TABLE Category_part1 (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, description LONGTEXT);
+CREATE TABLE Category_part2 (id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, priority DOUBLE, article_id INT(11), user_id INT(11));
+
+INSERT INTO Category_part1 (id, description) SELECT id, description FROM Category;
+INSERT INTO Category_part2 (id, priority, article_id, user_id) SELECT id, priority, article_id, user_id FROM Category;
+
+DROP TABLE Category;

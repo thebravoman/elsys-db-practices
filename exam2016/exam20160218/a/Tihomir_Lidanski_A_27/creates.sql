@@ -1,0 +1,33 @@
+CREATE TABLE Article_26 (
+	id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	name VARCHAR(155),
+	created_on DATE,
+	price DOUBLE 
+);
+
+CREATE TABLE Category (
+	id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	date_created_on DATE,
+	description LONGTEXT
+);
+
+CREATE TABLE User (
+	id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	gender VARCHAR(6),
+	created_on DATE
+	name VARCHAR(30),
+);
+
+CREATE TABLE Tag (
+	id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+	second_priority FLOAT,
+	hash VARCHAR(16)
+);
+
+# Article - many to one with Categories
+# Category - one to many with User
+# User - one to many with Tag
+
+CREATE TABLE Tag_Category(id INT(11) PRIMARY KEY UNSIGNED AUTO_INCREMENT, tag_id INT(11), category_id INT(11));
+CREATE TABLE User_Category(id INT(11) PRIMARY KEY UNSIGNED AUTO_INCREMENT, user_id INT(11), category_id INT(11));
+ALTER TABLE User ADD COLUMN article_26_id INT(11);
