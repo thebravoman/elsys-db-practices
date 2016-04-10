@@ -1,3 +1,5 @@
+require 'json'
+
 class Field
 	attr_accessor :name, :type
 	
@@ -112,15 +114,15 @@ class Main
 	
 	def generate_tables tables
 		puts "1. Create the following tables"
-		
+
 		tables.each do |table|
-			result = "Create table #{table.name}\n with columns:\n"
-			table.fields.each do |field|
-				result << "\t #{field.name}->#{field.type},"
-			end
-			result << "\n"
-			puts result
+			fields = table.fields.map {|f| [f.name, f.type] }.to_h
+			hash = {}
+			hash["name"] = table.name
+			hash[:fields] = fields
+			puts JSON.pretty_generate(hash)
 		end 
+		
 		puts "As a result SQL queries must be created"
 		puts "\n"
 	end
@@ -148,7 +150,7 @@ class Main
 		end
 		puts connections_string
 		puts "As a result SQL queries must be created"
-		puts "Write the queries from point 1 and 2 in a file called creates.sql"
+		puts "Write the queries from point 1 and 2 in a file called creates.sql. It should be possible to execute this file directly in mysql without errors."
 		puts "\n"
 		connections
 	end
@@ -158,7 +160,7 @@ class Main
 		puts "3. Insert"
 		puts "Add at least two records in each table"
 		puts "As a result SQL queries must be created"
-		puts "Write the queries from point 3 in a file called inserts.sql"
+		puts "Write the queries from point 3 in a file called inserts.sql. It should be possible to execute this file directly in mysql without errors."
 		puts "\n"
 	end
 	
@@ -166,7 +168,7 @@ class Main
 		puts "4. Answer the following question"
 		puts "Which are the #{conns[1].table2.name}(s) for a given #{conns[0].table1.name}"
 		puts "As a result SQL query must be created"
-		puts "Write the queries from points 4 in a file called selects1.sql"
+		puts "Write the queries from points 4 in a file called selects1.sql. It should be possible to execute this file directly in mysql without errors."
 		puts "\n"
 	end
 	
@@ -177,7 +179,7 @@ class Main
 		puts "#{table.name}_part1 containing #{table.fields[rand(table.fields.size)].name}"
 		puts "#{table.name}_part2 containing all the other fields"
 		puts "As a result SQL queries+code in other programming language must be create."
-		puts "Write the queries from points 6 in a file called migrates.sql"
+		puts "Write the queries from points 6 in a file called migrates.sql. It should be possible to execute this file directly in mysql without errors."
 		puts 
 	end
 
@@ -185,12 +187,17 @@ class Main
 		puts "8. Answer the following question"
 		puts "Which are the #{conns[2].table2.name}(s) for a given #{conns[1].table1.name}"
 		puts "As a result SQL query must be created"
-		puts "Write the queries from points 8 in a file called selects2.sql"
+		puts "Write the queries from points 8 in a file called selects2.sql. It should be possible to execute this file directly in mysql without errors."
 		puts "\n"
 	end
 	
 	
 	def do_generate
+		database = "exam"
+		puts "0. Create a database named '#{database}'"
+		puts "If there is such a database existing delete it first"
+		puts "Use this database for all the instructions from now on"
+		puts "\n"
 		tables = [Article.new, Category.new, User.new, Tag.new]
 		generate_tables tables
 		conns = generate_connections tables
@@ -205,10 +212,10 @@ class Main
 		puts "9. Draw a picture of the database"
 		puts "\n"
 		puts "10. Add all the files in a folder called FirstName_LastName_Class_Number"
-		puts "Create a zip from this folder and name the zip FirstName_LastName_Class_Number.zip"
+		puts "Create a zip or tar.gz from this folder and name the result FirstName_LastName_Class_Number.zip(tar.gz)"
 		puts "(here FirstName is your first name, LastName is your last name, class is A or B and Number is your number in class)"
 		puts ""
-		puts "Good luck and may the force be with you!"
+		puts "Good luck!"
 	end
 	
 end
