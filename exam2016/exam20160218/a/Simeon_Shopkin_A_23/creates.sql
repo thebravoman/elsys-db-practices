@@ -1,0 +1,32 @@
+
+
+
+
+CREATE TABLE Article_22 (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	published_on DATETIME,
+	content TEXT,
+	created_on DATETIME
+);
+
+CREATE TABLE Category (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	created_by VARCHAR(255),
+	date_created_on DATETIME
+);
+
+CREATE TABLE User (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,	
+	description TEXT,
+	twitter VARCHAR(255),
+	age INT
+);
+
+CREATE TABLE Tag (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	description TEXT,
+	hash VARCHAR(16)
+);
+
+CREATE TABLE Category_User(id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT, category_id INT(11), user_id INT(11));
+ALTER TABLE Category ADD COLUMN tag_id INT(11);
