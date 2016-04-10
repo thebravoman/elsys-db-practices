@@ -1,0 +1,33 @@
+CREATE TABLE Article_23 (
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255),
+    url VARCHAR(255),
+    content VARCHAR(1000)
+); 
+
+CREATE TABLE Category (
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    description TEXT,
+    priority DOUBLE,
+);
+
+CREATE TABLE User (
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255)
+    income FLOAT,
+    twitter VARCHAR(255)
+);
+
+CREATE TABLE Tag (
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    second_priority FLOAT,
+    name VARCHAR(255)
+);
+
+ALTER TABLE Tag ADD COLUMN Category INT(11);
+CREATE TABLE Category_Tag(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT, 
+    category_id INT(11),
+    tag_id INT(11)
+);
+ALTER TABLE Article_23 ADD COLUMN Tag INT(11);
