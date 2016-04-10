@@ -194,7 +194,9 @@ class Main
 	
 	def do_generate
 		database = "exam"
-		puts "0. Create a database named '#{database}'"
+		puts "0. Use MySQL syntax"
+		puts "\n"
+		puts "0.1 Create a database named '#{database}'"
 		puts "If there is such a database existing delete it first"
 		puts "Use this database for all the instructions from now on"
 		puts "\n"
