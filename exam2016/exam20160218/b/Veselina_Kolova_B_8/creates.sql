@@ -1,0 +1,30 @@
+CREATE TABLE Article_7 (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	password VARCHAR(255),
+	visible TINYINT(1),
+	url VARCHAR(255)
+);
+
+CREATE TABLE Category (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	date_created_on DATETIME,
+	name VARCHAR(255)
+);
+
+CREATE TABLE User (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	created_on DATETIME,
+	income FLOAT,
+	name VARCHAR(255)
+);
+
+CREATE TABLE Tag (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	second_priority FLOAT,
+	description VARCHAR(255)
+);
+
+
+ALTER TABLE Category ADD COLUMN article_7_id INT(11);
+ALTER TABLE User ADD COLUMN tag_id INT(11);
+

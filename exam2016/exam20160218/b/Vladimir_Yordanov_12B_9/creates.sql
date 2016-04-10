@@ -1,0 +1,30 @@
+CREATE TABLE Article_8 (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255),
+	visible BIT,
+	content TEXT
+);
+
+CREATE TABLE Category (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	date_created_on DATE,
+	created_by VARCHAR(255)
+);
+
+CREATE TABLE User (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	description TEXT,
+	password VARCHAR(255),
+	created_on DATE
+);
+
+CREATE TABLE Tag (
+	id INT(11) PRIMARY KEY NOT NULL AUTO_INCEREMENT,
+	priority INT(11),
+	name VARCHAR(255)
+);
+
+ALTER TABLE Tag ADD COLUMN category_id INT(11);
+ALTER TABLE Category ADD COLUMN article_id INT(11);
+CREATE TABLE Article_user(id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT, article_id INT(11), user_id INT(11));
+
