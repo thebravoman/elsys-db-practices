@@ -1,0 +1,87 @@
+Б_19_Калоян
+Technological School 'Electronic Systems'
+Sofia, 2016
+Databases
+Kiril Mitov & Dobromir Ivanov
+
+0. Use MySQL syntax
+
+0.1 Create a database named 'exam'
+If there is such a database existing delete it first
+Use this database for all the instructions from now on
+
+1. Create the following tables
+{
+  "name": "Article_18",
+  "fields": {
+    "name": "varchar",
+    "content": "long string",
+    "visible": "boolean"
+  }
+}
+{
+  "name": "Category",
+  "fields": {
+    "date_created_on": "date",
+    "description": "long text"
+  }
+}
+{
+  "name": "User",
+  "fields": {
+    "picture_url": "string",
+    "age": "integer",
+    "description": "long text"
+  }
+}
+{
+  "name": "Tag",
+  "fields": {
+    "second_priority": "float",
+    "name": "varchar"
+  }
+}
+As a result SQL queries must be created
+
+2. Connect the tables in the following way
+Tag has a one to many connection to User
+User has a one to many connection to Article_18
+Article_18 has a many to many connection to Category
+As a result SQL queries must be created
+Write the queries from point 1 and 2 in a file called creates.sql. It should be possible to execute this file directly in mysql without errors.
+
+
+3. Insert
+Add at least two records in each table
+As a result SQL queries must be created
+Write the queries from point 3 in a file called inserts.sql. It should be possible to execute this file directly in mysql without errors.
+
+4. Answer the following question
+Which are the Article_18(s) for a given Tag
+As a result SQL query must be created
+Write the queries from points 4 in a file called selects1.sql. It should be possible to execute this file directly in mysql without errors.
+
+5. Export the Data Base to SQL or CSV
+
+6. Execute the following migration
+Separate User on two tables
+User_part1 containing description
+User_part2 containing all the other fields
+As a result SQL queries+code in other programming language must be create.
+Write the queries from points 6 in a file called migrates.sql. It should be possible to execute this file directly in mysql without errors.
+
+7. Export the Data Base to SQL or CSV
+
+8. Answer the following question
+Which are the Category(s) for a given User
+As a result SQL query must be created
+Write the queries from points 8 in a file called selects2.sql. It should be possible to execute this file directly in mysql without errors.
+
+9. Draw a picture of the database
+
+10. Add all the files in a folder called FirstName_LastName_Class_Number
+Create a zip or tar.gz from this folder and name the result FirstName_LastName_Class_Number.zip(tar.gz)
+(here FirstName is your first name, LastName is your last name, class is A or B and Number is your number in class)
+
+Good luck!
+
