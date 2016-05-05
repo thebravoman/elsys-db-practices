@@ -214,7 +214,7 @@ class Main
 		puts "9. Draw a picture of the database"
 		puts "\n"
 		puts "10. Add all the files in a folder called FirstName_LastName_Class_Number"
-		puts "Create a zip or tar.gz from this folder and name the result FirstName_LastName_Class_Number.zip(tar.gz)"
+		puts "Create a zip or tar.gz containing this folder and name it FirstName_LastName_Class_Number.zip(tar.gz)"
 		puts "(here FirstName is your first name, LastName is your last name, class is A or B and Number is your number in class)"
 		puts ""
 		puts "Good luck!"
